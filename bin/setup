@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MYRC_DIR="$HOME/SparkleShare/github.com/myrc/"
+
 function backpath() {
   if [ -f $1 ] || [ -f $1 ]; then
     mv $1 $1.bak
@@ -9,4 +11,8 @@ function backpath() {
 function symlink() {
   backpath $2
   ln -sf $1 $2
+}
+
+function install_rcs() {
+  symlink $MYRC_DIR/gitconfig $HOME/.gitconfig
 }
