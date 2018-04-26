@@ -45,3 +45,4 @@ function install_zim() {
 
 install_rcs
 install_bin
+install_zim
