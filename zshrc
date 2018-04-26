@@ -12,6 +12,8 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
+PATH=$HOME/bin:$PATH
+
 # Docker
 alias docker="sudo docker"
 alias d="docker"
