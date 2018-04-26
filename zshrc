@@ -22,5 +22,5 @@ alias d="docker"
 alias k="kubectl"
 
 # rbenv
-[[ -d ${HOME}/rbenv/bin ]] && export PATH=$HOME/rbenv/bin:$PATH
+[[ -d ${HOME}/.rbenv/bin ]] && export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
