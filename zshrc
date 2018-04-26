@@ -11,3 +11,8 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+alias docker="sudo docker"
+alias d="docker"
+
+alias k="kubectl"
