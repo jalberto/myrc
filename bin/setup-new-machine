@@ -29,7 +29,9 @@ function install_bin() {
 function install_zim() {
   if [ -d $HOME/.zim ]; then
     echo " * Update zsh fw Zim..."
+    zsh
     zmanage update
+    exit
   else
     echo " * Install zsh fw Zim..."
     git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
