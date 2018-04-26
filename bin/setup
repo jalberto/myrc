@@ -26,5 +26,22 @@ function install_bin() {
   chmod +x $HOME/bin/*
 }
 
+function install_zim() {
+  if [ -d $HOME/.zim ]; then
+    echo " * Update zsh fw Zim..."
+    zmanage update
+  else
+    echo " * Install zsh fw Zim..."
+    git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
+
+    setopt EXTENDED_GLOB
+    for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
+      user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
+      touch ${user_file}
+      ( print -rn "$(<${template_file})$(<${user_file})" >! ${user_file} ) 2>/dev/null
+    done
+  fi
+}
+
 install_rcs
 install_bin
