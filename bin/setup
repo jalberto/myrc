@@ -14,8 +14,16 @@ function symlink() {
 }
 
 function install_rcs() {
-  echo " * Install RC files"
+  echo " * Install RC files..."
+
   symlink $MYRC_DIR/gitconfig $HOME/.gitconfig
+}
+
+function install_bin() {
+  echo " * Install Bin dir..."
+
+  symlink $MYRC_DIR/bin $HOME/bin
+  chmod +x $HOME/bin/*
 }
 
 install_rcs
