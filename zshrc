@@ -24,3 +24,10 @@ alias k="kubectl"
 # rbenv
 [[ -d ${HOME}/.rbenv/bin ]] && export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
+
+# dnf
+alias dnf="sudo dnf"
+alias dnfi="dnf install"
+alias dnfi="dnf install"
+alias dnfU="dnf update"
+alias dnfs="dnf search"
