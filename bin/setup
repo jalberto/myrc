@@ -27,3 +27,4 @@ function install_bin() {
 }
 
 install_rcs
+install_bin
