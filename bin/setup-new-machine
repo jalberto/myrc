@@ -42,6 +42,8 @@ function install_zim() {
       touch ${user_file}
       ( print -rn "$(<${template_file})$(<${user_file})" >! ${user_file} ) 2>/dev/null
     done
+
+    chsh -s =zsh
   fi
 }
 
