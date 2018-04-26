@@ -12,7 +12,9 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
+# Docker
 alias docker="sudo docker"
 alias d="docker"
 
+# K8s
 alias k="kubectl"
