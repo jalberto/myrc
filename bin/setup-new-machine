@@ -17,6 +17,10 @@ function install_rcs() {
   echo " * Install RC files..."
 
   symlink $MYRC_DIR/gitconfig $HOME/.gitconfig
+
+  symlink $MYRC_DIR/zshrc $HOME/.zshrc
+  symlink $MYRC_DIR/zimrc $HOME/.zimrc
+  symlink $MYRC_DIR/zlogin $HOME/.zlogin
 }
 
 function install_bin() {
@@ -47,6 +51,6 @@ function install_zim() {
   fi
 }
 
+# install_zim
 install_rcs
 install_bin
-# install_zim
