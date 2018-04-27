@@ -78,21 +78,17 @@ function install_rbenv() {
 }
 
 function install_tmux() {
-  echo " * Install tmux ..."
+  echo " * Install tmux (byobu) ..."
 
-  mkdir -p ~/.tmux/plugins
+  # mkdir -p ~/.tmux/plugins
 
-  symlink $MYRC_DIR/tmux.conf ~/.tmux.conf
-  symlink $MYRC_DIR/tmux/theme ~/.tmux/theme
-  symlink $MYRC_DIR/tmux/keys ~/.tmux/keys
-  symlink $MYRC_DIR/tmux/f-keys.tmux ~/.tmux/f-keys.tmux
-  symlink $MYRC_DIR/tmux/f-keys.tmux.disable ~/.tmux/f-keys.tmux.disable
+  symlink $MYRC_DIR/byobu/tmux.conf ~/.byobu/.tmux.conf
 
-  if [ -d $HOME/.tmux/plugins/tpm ]; then
-    cd ~/.tmux/plugins/tpm && git pull
-  else
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  fi
+  # if [ -d $HOME/.tmux/plugins/tpm ]; then
+  #   cd ~/.tmux/plugins/tpm && git pull
+  # else
+  #   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  # fi
 }
 
 install_pkgs
