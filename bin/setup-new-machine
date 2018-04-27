@@ -77,6 +77,17 @@ function install_rbenv() {
   fi
 }
 
+function install_tmux() {
+  echo " * Install tmux ..."
+
+  if [ -d $HOME/.tmux/plugins/tpm ]; then
+    cd ~/.tmux/plugins/tpm && git pull
+  else
+    mkdir -p ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+}
+
 install_pkgs
 install_zim
 install_rbenv
