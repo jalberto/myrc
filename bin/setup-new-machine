@@ -55,6 +55,10 @@ function install_rbenv() {
   if [ -d $HOME/.rbenv ]; then
     echo " * Update rbenv..."
     cd ~/.rbenv && git pull
+    cd ~/.rbenv/plugins
+    for p in `ls` ; do
+      cd $p && git pull
+    done
   else
     echo " * Install rbenv..."
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
