@@ -91,5 +91,6 @@ function install_tmux() {
 install_pkgs
 install_zim
 install_rbenv
+install_tmux
 install_rcs
 install_bin
