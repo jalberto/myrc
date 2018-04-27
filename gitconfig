@@ -2,7 +2,7 @@
 	name = JA
 	email = ja@josealberto.org
 [core]
-	excludesfile = /home/bass/.gitignore
+	excludesfile = ~/.gitignore
 	editor = nvim -f
 [color]
 	diff = auto
