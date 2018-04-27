@@ -24,6 +24,22 @@ alias k="kubectl"
 # rbenv
 [[ -d ${HOME}/.rbenv/bin ]] && export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
+# ruby
+bu() {
+  if [ -f $PWD/bin/bundle ]; then
+    bin/bundle
+  else
+    bundle
+  fi
+}
+
+ra() {
+  if [ -f $PWD/bin/rails ]; then
+    bin/rails
+  else
+    bundle ex rails
+  fi
+}
 
 # dnf
 alias dnf="sudo dnf"
@@ -34,3 +50,6 @@ alias dnfs="dnf search"
 
 # fzf
 source /usr/share/fzf/shell/key-bindings.zsh
+
+# tmux
+alias by="byobu"
