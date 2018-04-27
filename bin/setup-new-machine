@@ -71,5 +71,6 @@ function install_rbenv() {
 }
 
 # install_zim
+install_rbenv
 install_rcs
 install_bin
