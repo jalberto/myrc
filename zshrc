@@ -24,7 +24,6 @@ alias k="kubectl"
 # rbenv
 [[ -d ${HOME}/.rbenv/bin ]] && export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
-source ~/.rbenv/completions/rbenv.zsh
 
 # dnf
 alias dnf="sudo dnf"
