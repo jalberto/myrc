@@ -25,8 +25,6 @@ function install_rcs() {
   symlink $MYRC_DIR/zshrc $HOME/.zshrc
   symlink $MYRC_DIR/zimrc $HOME/.zimrc
   symlink $MYRC_DIR/zlogin $HOME/.zlogin
-
-  symlink $MYRC_DIR/byobu/color.tmux $HOME/.byobu/color.tmux
 }
 
 function install_bin() {
@@ -80,12 +78,19 @@ function install_rbenv() {
 }
 
 function install_tmux() {
-  echo " * Install tmux (byobu) config ..."
+  echo " * Install tmux ..."
+
+  mkdir -p ~/.tmux/plugins
+
+  symlink $MYRC_DIR/tmux.conf ~/.tmux.conf
+  symlink $MYRC_DIR/tmux/theme ~/.tmux/theme
+  symlink $MYRC_DIR/tmux/keys ~/.tmux/keys
+  symlink $MYRC_DIR/tmux/f-keys.tmux ~/.tmux/f-keys.tmux
+  symlink $MYRC_DIR/tmux/f-keys.tmux.disable ~/.tmux/f-keys.tmux.disable
 
   if [ -d $HOME/.tmux/plugins/tpm ]; then
     cd ~/.tmux/plugins/tpm && git pull
   else
-    mkdir -p ~/.tmux/plugins/tpm
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   fi
 }
