@@ -31,3 +31,6 @@ alias dnfi="dnf install"
 alias dnfi="dnf install"
 alias dnfU="dnf update"
 alias dnfs="dnf search"
+
+# fzf
+source /usr/share/fzf/shell/key-bindings.zsh
