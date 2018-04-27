@@ -2,7 +2,7 @@
 
 MYRC_DIR="$HOME/SparkleShare/github.com/myrc/"
 
-SYSTEM_PKGS="zsh fasd fzf git nvim ctags"
+SYSTEM_PKGS="zsh fasd fzf git nvim ctags tmux"
 APPS_PKGS=""
 
 function backpath() {
