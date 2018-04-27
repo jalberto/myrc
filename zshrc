@@ -51,5 +51,10 @@ alias dnfs="dnf search"
 # fzf
 source /usr/share/fzf/shell/key-bindings.zsh
 
+# vim
+export EDITOR=nvim
+alias vi="nvim"
+alias v="vi"
+
 # tmux
 alias by="byobu"
