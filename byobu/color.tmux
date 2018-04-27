@@ -17,5 +17,5 @@ set -g pane-active-border-fg "#646466"
 set -g pane-border-fg "#646466"
 
 # active / inactive pane bg
-set -g window-style "bg=#141420"
-set -g window-active-style "bg=#0b0b1a"
+# set -g window-style "bg=#141420"
+# set -g window-active-style "bg=#0b0b1a"
