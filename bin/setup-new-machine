@@ -57,7 +57,7 @@ function install_rbenv() {
     cd ~/.rbenv && git pull
     cd ~/.rbenv/plugins
     for p in `ls` ; do
-      cd $p && git pull
+      cd $p && git pull && cd ..
     done
   else
     echo " * Install rbenv..."
