@@ -17,6 +17,7 @@ function install_rcs() {
   echo " * Install RC files..."
 
   symlink $MYRC_DIR/gitconfig $HOME/.gitconfig
+  symlink $MYRC_DIR/gitignore $HOME/.gitignore
 
   symlink $MYRC_DIR/zshrc $HOME/.zshrc
   symlink $MYRC_DIR/zimrc $HOME/.zimrc
