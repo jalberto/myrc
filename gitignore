@@ -1,0 +1,7 @@
+*.swp
+Session.vim
+tags
+ctags
+*.tags
+.DS_Store
+*.sock
