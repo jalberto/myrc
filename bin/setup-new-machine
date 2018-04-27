@@ -2,6 +2,9 @@
 
 MYRC_DIR="$HOME/SparkleShare/github.com/myrc/"
 
+SYSTEM_PKGS="zsh fasd git nvim"
+APPS_PKGS=""
+
 function backpath() {
   if [ -f $1 ] || [ -f $1 ]; then
     mv $1 $1.bak
@@ -29,6 +32,10 @@ function install_bin() {
 
   symlink $MYRC_DIR/bin $HOME/bin
   chmod +x $HOME/bin/*
+}
+
+function install_pkgs() {
+  sudo dnf install ${SYSTEM_PKGS} ${APPS_PKGS}
 }
 
 function install_zim() {
@@ -70,6 +77,7 @@ function install_rbenv() {
   fi
 }
 
+install_pkgs
 install_zim
 install_rbenv
 install_rcs
