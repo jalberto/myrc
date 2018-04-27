@@ -22,6 +22,8 @@
 	sa = stash apply
 	ss = stash save
 	df = diff --word-diff
+	merc = merge --no-ff
+	merq = merge --squash
 [push]
 	default = current
 [diff]
