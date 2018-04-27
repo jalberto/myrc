@@ -10,3 +10,7 @@ set -g message-fg "#d4d4d9"
 set -g message-bg "#3e3e40"
 set -g message-command-fg "#a89984"
 set -g message-command-bg "#646466"
+
+# panes
+set -g pane-active-border-fg "#646466"
+set -g pane-border-fg "#646466"
