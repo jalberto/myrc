@@ -26,7 +26,7 @@ function install_rcs() {
   symlink $MYRC_DIR/zimrc $HOME/.zimrc
   symlink $MYRC_DIR/zlogin $HOME/.zlogin
 
-  symlink $MYRC_DIR/tmux/tmux.conf $HOME/.tmux/tmux.conf
+  symlink $MYRC_DIR/tmux.conf $HOME/.tmux.conf
 }
 
 function install_bin() {
