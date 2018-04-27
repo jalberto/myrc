@@ -53,10 +53,16 @@ function install_zim() {
 
 function install_rbenv() {
   if [ -d $HOME/.rbenv ]; then
+    echo " * Update rbenv..."
     cd ~/.rbenv && git pull
   else
+    echo " * Install rbenv..."
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
     cd ~/.rbenv && src/configure && make -C src
+
+    echo "   * Install rbenv plugins..."
+    mkdir -p ~/.rbenv/plugins
+    git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
   fi
 }
 
