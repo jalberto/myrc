@@ -1,8 +1,3 @@
-BYOBU_DARK="\#333333"
-BYOBU_LIGHT="\#EEEEEE"
-BYOBU_ACCENT="\#75507B"
-BYOBU_HIGHLIGHT="\#646466"
-
 # status
 # set -g status-justify "left"
 # set -g status "on"
@@ -16,8 +11,8 @@ BYOBU_HIGHLIGHT="\#646466"
 # set -g message-command-bg "#646466"
 
 # panes
-set -g pane-active-border-fg "#646466"
-set -g pane-border-fg "#646466"
+# set -g pane-active-border-fg "#646466"
+# set -g pane-border-fg "#646466"
 
 # active / inactive pane bg
 # set -g window-style "bg=#141420"
