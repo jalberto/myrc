@@ -1,3 +1,37 @@
 [user]
 	name = JA
 	email = ja@josealberto.org
+[core]
+	excludesfile = /home/bass/.gitignore
+	editor = nvim -f
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	co = checkout
+	ci = commit
+	cia = commit -a
+	smi = submodule init
+	smu = submodule update
+	sm = submodule
+	st = status -sb
+	br = branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	sl = stash list --pretty=format:'%Cblue%h %Cred* %C(yellow)%s'
+	sa = stash apply
+	ss = stash save
+	df = diff --word-diff
+[push]
+	default = current
+[diff]
+	tool = meld
+[merge]
+	tool = mymeld
+	conflictstyle = diff3
+[difftool]
+	prompt = false
+[mergetool "mymeld"]
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE"
+[help]
+	autocorrect = 1
