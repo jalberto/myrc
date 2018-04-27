@@ -58,3 +58,6 @@ alias v="vi"
 
 # tmux
 alias by="byobu"
+pwdf() {
+  pwd | rev | cut -d'/' -f-3 | rev | sed 's/\/home\/ja/\~/' 
+}
