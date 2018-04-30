@@ -58,3 +58,5 @@ alias v="vi"
 
 # tmux
 alias by="byobu"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
