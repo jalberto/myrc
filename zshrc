@@ -14,6 +14,8 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # [[ -d ${HOME}/bin ]] && export PATH=$HOME/bin:$PATH
 [[ -d ${HOME}/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
+[[ -d ${HOME}/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
+
 
 # Docker
 alias docker="sudo docker"
