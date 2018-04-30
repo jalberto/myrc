@@ -13,6 +13,7 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # [[ -d ${HOME}/bin ]] && export PATH=$HOME/bin:$PATH
+[[ -d ${HOME}/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
 
 # Docker
 alias docker="sudo docker"
