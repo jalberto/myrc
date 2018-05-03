@@ -16,6 +16,14 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 [[ -d ${HOME}/.local/bin ]] && export PATH=$HOME/.local/bin:$PATH
 [[ -d ${HOME}/.cargo/bin ]] && export PATH=$HOME/.cargo/bin:$PATH
 
+# Go
+export GOPATH="$HOME/.go"
+[[ -d ${HOME}/.go/bin ]] && export PATH=$HOME/.go/bin:$PATH
+
+# 10 second wait if you do something that will delete everything
+setopt RM_STAR_WAIT
+# Case insensitive globbing
+setopt NO_CASE_GLOB
 
 # Docker
 alias docker="sudo docker"
