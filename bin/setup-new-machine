@@ -1,5 +1,4 @@
 #!/bin/bash
-
 MYRC_DIR="$HOME/myrc/"
 
 SYSTEM_PKGS="zsh fasd fzf git neovim ctags tmux byobu"
@@ -106,14 +105,32 @@ function install_flatpak() {
  flatpak install flathub org.gtk.Gtk3theme.Arc-Dark
 }
 
+function install_vim() {
+  [ ! -d $HOME/.vim ] && git clone git://github.com/jalberto/bass-vim.git $HOME/.vim
+  [ ! -e $HOME/.nvim ] && ln -s ~/.vim ~/.nvim
+  [ ! -e $HOME/.vimrc ] && ln -s ~/.vim/vimrc ~/.vimrc
+  mkdir -p $HOME/.config/nvim
+  [ ! -e $HOME/.config/nvim/init.vim ] && ln -s ~/.vim/vimrc ~/.config/nvim/init.vim
+
+  pip install --user neovim
+  pip3 install --user neovim
+}
+
+function install_docker() {
+  sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  sudo dnf install docker-ce
+}
+
 if [ -z $1 ]; then
   install_flatpak
   install_pkgs
   install_zim
   install_rbenv
   install_tmux
+  install_vim
   install_rcs
   install_bin
+  install_docker
 else
   $1
 fi
