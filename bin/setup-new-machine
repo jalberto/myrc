@@ -1,12 +1,13 @@
 #!/bin/bash
 
-MYRC_DIR="$HOME/SparkleShare/github.com/myrc/"
+MYRC_DIR="$HOME/myrc/"
 
-SYSTEM_PKGS="zsh fasd fzf git nvim ctags tmux byobu"
-APPS_PKGS=""
+SYSTEM_PKGS="zsh fasd fzf git neovim ctags tmux byobu"
+APPS_PKGS="meld gnome-tweaks"
+DEV_PKGS="cmake make automake gcc gcc-c++ kernel-devel python-devel"
 
 function backpath() {
-  if [ -f $1 ] || [ -f $1 ]; then
+  if [ -f $1 ] || [ -d $1 ]; then
     mv $1 $1.bak
   fi
 }
@@ -33,12 +34,12 @@ function install_rcs() {
 function install_bin() {
   echo " * Install Bin dir..."
 
-  symlink $MYRC_DIR/bin $HOME/bin
+  [ ! -e $HOME/bin ] && ln -sf $MYRC_DIR/bin $HOME/bin
   chmod +x $HOME/bin/*
 }
 
 function install_pkgs() {
-  sudo dnf install ${SYSTEM_PKGS} ${APPS_PKGS}
+  sudo dnf install -y ${SYSTEM_PKGS} ${APPS_PKGS} ${DEV_PKGS}
 }
 
 function install_zim() {
@@ -50,14 +51,19 @@ function install_zim() {
     echo " * Install zsh fw Zim..."
     git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
 
-    setopt EXTENDED_GLOB
-    for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
-      user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
-      touch ${user_file}
-      ( print -rn "$(<${template_file})$(<${user_file})" >! ${user_file} ) 2>/dev/null
-    done
+    # setopt EXTENDED_GLOB
+    # for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
+    #   user_file="${ZDOTDIR:-${HOME}}/.${template_file:t}"
+    #   touch ${user_file}
+    #   ( print -rn "$(<${template_file})$(<${user_file})" >! ${user_file} ) 2>/dev/null
+    # done
 
-    chsh -s =zsh
+    symlink $MYRC_DIR/zlogin $HOME/.zlogin
+    symlink $MYRC_DIR/zshrc $HOME/.zshrc
+    symlink $MYRC_DIR/zimrc $HOME/.zimrc
+
+    #chsh -s =zsh
+    sudo usermod -s /bin/zsh ja
   fi
 }
 
@@ -94,9 +100,20 @@ function install_tmux() {
   # fi
 }
 
-install_pkgs
-install_zim
-install_rbenv
-install_tmux
-install_rcs
-install_bin
+function install_flatpak() {
+  flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+  # flatpak remote-ls flathub | grep org.gtk.Gtk3theme
+ flatpak install flathub org.gtk.Gtk3theme.Arc-Dark
+}
+
+if [ -z $1 ]; then
+  install_flatpak
+  install_pkgs
+  install_zim
+  install_rbenv
+  install_tmux
+  install_rcs
+  install_bin
+else
+  $1
+fi
