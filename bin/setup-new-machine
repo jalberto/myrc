@@ -2,8 +2,9 @@
 MYRC_DIR="$HOME/myrc/"
 
 SYSTEM_PKGS="zsh fasd fzf git neovim ctags tmux byobu"
-APPS_PKGS="meld gnome-tweaks"
-DEV_PKGS="cmake make automake gcc gcc-c++ kernel-devel python-devel"
+APPS_PKGS="meld gnome-tweaks inkscape nethack"
+DEV_PKGS="cmake make automake gcc gcc-c++ kernel-devel python-devel autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel erlang"
+FONT_PKGS="google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts google-roboto-condensed-fonts"
 
 function backpath() {
   if [ -f $1 ] || [ -d $1 ]; then
@@ -83,6 +84,21 @@ function install_rbenv() {
     mkdir -p ~/.rbenv/plugins
     git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
   fi
+  mkdir -p "$(rbenv root)"/plugins
+  git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+  git clone https://github.com/rkh/rbenv-update.git "$(rbenv root)/plugins/rbenv-update"
+  git clone git://github.com/tpope/rbenv-communal-gems.git ~/.rbenv/plugins/rbenv-communal-gems
+  rbenv communize --all
+}
+
+function install_asdf() {
+  symlink $MYRC_DIR/default-gems $HOME/.default-gemsc
+  symlink $MYRC_DIR/asdfrc-gems $HOME/.asdfrc
+
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.3
+  asdf plugin-add nodejs
+  asdf plugin-add elixir
+  asdf plugin-add ruby
 }
 
 function install_tmux() {
@@ -118,19 +134,39 @@ function install_vim() {
 
 function install_docker() {
   sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-  sudo dnf install docker-ce
+  sudo dnf config-manager --set-enabled docker-ce-test
+  sudo dnf install -y docker-ce docker-compose
+}
+
+function install_k8s() {
+  sudo tee /etc/yum.repos.d/kubernetes.repo <<EOF
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+  sudo dnf install -y kubectl-1.8.9-0
+
+  cd /tmp
+  wget https://kubernetes-helm.storage.googleapis.com/helm-v2.8.2-linux-amd64.tar.gz
+  tar xvfz helm-v2.8.2-linux-amd64.tar.gz
+  mv linux-amd64/helm ~/bin/
 }
 
 if [ -z $1 ]; then
   install_flatpak
   install_pkgs
   install_zim
-  install_rbenv
+  install_asdf
   install_tmux
   install_vim
   install_rcs
   install_bin
   install_docker
+  install_k8s
 else
   $1
 fi

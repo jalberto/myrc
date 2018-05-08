@@ -28,13 +28,11 @@ setopt NO_CASE_GLOB
 # Docker
 alias docker="sudo docker"
 alias d="docker"
+alias doco="docker-compose"
 
 # K8s
 alias k="kubectl"
 
-# rbenv
-[[ -d ${HOME}/.rbenv/bin ]] && export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
 # ruby
 bu() {
   if [ -f $PWD/bin/bundle ]; then
@@ -51,6 +49,10 @@ ra() {
     bundle ex rails
   fi
 }
+
+# asdf
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
 
 # dnf
 alias dnf="sudo dnf"
