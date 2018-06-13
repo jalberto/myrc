@@ -50,10 +50,6 @@ ra() {
   fi
 }
 
-# asdf
-source $HOME/.asdf/asdf.sh
-source $HOME/.asdf/completions/asdf.bash
-
 # dnf
 alias dnf="sudo dnf"
 alias dnfi="dnf install"
@@ -72,4 +68,40 @@ alias v="vi"
 # tmux
 alias by="byobu"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# asdf
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
+
+# Mnemonic [V]ersion [M]anager [I]nstall
+vmi() {
+  local lang=${1}
+
+  if [[ ! $lang ]]; then
+    lang=$(asdf plugin-list | fzf)
+  fi
+
+  if [[ $lang ]]; then
+    local versions=$(asdf list-all $lang | fzf -m)
+    if [[ $versions ]]; then
+      for version in $(echo $versions);
+      do; asdf install $lang $version; done;
+    fi
+  fi
+}
+# Mnemonic [V]ersion [M]anager [C]lean
+vmc() {
+  local lang=${1}
+
+  if [[ ! $lang ]]; then
+    lang=$(asdf plugin-list | fzf)
+  fi
+
+  if [[ $lang ]]; then
+    local versions=$(asdf list $lang | fzf -m)
+    if [[ $versions ]]; then
+      for version in $(echo $versions);
+      do; asdf uninstall $lang $version; done;
+    fi
+  fi
+}
+

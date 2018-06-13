@@ -1,7 +1,7 @@
 #!/bin/bash
 MYRC_DIR="$HOME/myrc/"
 
-SYSTEM_PKGS="zsh fasd fzf git neovim ctags tmux byobu"
+SYSTEM_PKGS="zsh fasd fzf git neovim ctags tmux byobu inotify-tools"
 APPS_PKGS="meld gnome-tweaks inkscape nethack"
 DEV_PKGS="cmake make automake gcc gcc-c++ kernel-devel python-devel autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel erlang"
 FONT_PKGS="google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts google-roboto-condensed-fonts"
@@ -118,7 +118,12 @@ function install_tmux() {
 function install_flatpak() {
   flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
   # flatpak remote-ls flathub | grep org.gtk.Gtk3theme
- flatpak install flathub org.gtk.Gtk3theme.Arc-Dark
+  flatpak install flathub org.gtk.Gtk3theme.Arc-Dark
+  flatpak install flathub org.freedesktop.Platform.ffmpeg
+}
+
+function install_ffdev() {
+  flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxDevEdition.flatpakref
 }
 
 function install_vim() {
@@ -154,6 +159,15 @@ EOF
   wget https://kubernetes-helm.storage.googleapis.com/helm-v2.8.2-linux-amd64.tar.gz
   tar xvfz helm-v2.8.2-linux-amd64.tar.gz
   mv linux-amd64/helm ~/bin/
+
+  curl -sSL https://github.com/shyiko/kubesec/releases/download/0.8.0/kubesec-0.8.0-linux-amd64 -o kubesec
+  chmod a+x kubesec
+  sudo mv kubesec /usr/local/bin/
+}
+
+function install_vpn() {
+  sudo wget https://repo.windscribe.com/fedora/windscribe.repo -O /etc/yum.repos.d/windscribe.repo
+  sudo dnf install windscribe-cli
 }
 
 if [ -z $1 ]; then
@@ -167,6 +181,7 @@ if [ -z $1 ]; then
   install_bin
   install_docker
   install_k8s
+  install_vpn
 else
   $1
 fi
