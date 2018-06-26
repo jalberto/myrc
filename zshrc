@@ -32,6 +32,13 @@ alias doco="docker-compose"
 
 # K8s
 alias k="kubectl"
+alias kp="kube-prompt"
+alias kt="kubetail"
+alias kall="kubectl --all-namespaces"
+source <(kubectl completion zsh)
+
+# elixir
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # ruby
 bu() {

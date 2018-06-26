@@ -160,9 +160,9 @@ EOF
   tar xvfz helm-v2.8.2-linux-amd64.tar.gz
   mv linux-amd64/helm ~/bin/
 
-  curl -sSL https://github.com/shyiko/kubesec/releases/download/0.8.0/kubesec-0.8.0-linux-amd64 -o kubesec
-  chmod a+x kubesec
-  sudo mv kubesec /usr/local/bin/
+  # curl -sSL https://github.com/shyiko/kubesec/releases/download/0.8.0/kubesec-0.8.0-linux-amd64 -o kubesec
+  # chmod a+x kubesec
+  # sudo mv kubesec /usr/local/bin/
 }
 
 function install_vpn() {
