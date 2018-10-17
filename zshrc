@@ -25,6 +25,9 @@ setopt RM_STAR_WAIT
 # Case insensitive globbing
 setopt NO_CASE_GLOB
 
+# Misc
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
 # Docker
 alias docker="sudo docker"
 alias d="docker"

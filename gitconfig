@@ -30,7 +30,7 @@
 [diff]
 	tool = meld
 [merge]
-	tool = mymeld
+	tool = fugitive
 	conflictstyle = diff3
 [difftool]
 	prompt = false
@@ -38,3 +38,5 @@
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE"
 [help]
 	autocorrect = 1
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"

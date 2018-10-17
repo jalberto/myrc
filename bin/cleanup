@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sudo journalctl --vacuum-size=100M
+pkcon refresh force -c -1
+sudo dnf clean all
+
+sudo docker image prune -f
+sudo docker container prune -f
+sudo docker volume prune -f

@@ -3,7 +3,7 @@ MYRC_DIR="$HOME/myrc/"
 
 SYSTEM_PKGS="zsh fasd fzf git neovim ctags tmux byobu inotify-tools"
 APPS_PKGS="meld gnome-tweaks inkscape nethack"
-DEV_PKGS="cmake make automake gcc gcc-c++ kernel-devel python-devel autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel erlang"
+DEV_PKGS="cmake make automake gcc gcc-c++ kernel-devel python-devel autoconf readline-devel ncurses-devel openssl-devel libyaml-devel libxslt-devel libffi-devel libtool unixODBC-devel erlang ncdu"
 FONT_PKGS="google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts google-roboto-condensed-fonts"
 
 function backpath() {
@@ -153,16 +153,16 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
-  sudo dnf install -y kubectl-1.8.9-0
+  sudo dnf install -y kubectl
 
   cd /tmp
   wget https://kubernetes-helm.storage.googleapis.com/helm-v2.8.2-linux-amd64.tar.gz
   tar xvfz helm-v2.8.2-linux-amd64.tar.gz
   mv linux-amd64/helm ~/bin/
 
-  # curl -sSL https://github.com/shyiko/kubesec/releases/download/0.8.0/kubesec-0.8.0-linux-amd64 -o kubesec
-  # chmod a+x kubesec
-  # sudo mv kubesec /usr/local/bin/
+  curl -sSL https://raw.githubusercontent.com/johanhaleby/kubetail/master/kubetail -o kubetail
+  chmod a+x kubetail
+  sudo mv kubetail /usr/local/bin/
 }
 
 function install_vpn() {
