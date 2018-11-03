@@ -30,8 +30,8 @@
 [diff]
 	tool = meld
 [merge]
-	tool = fugitive
-	conflictstyle = diff3
+	tool = diffconflicts
+	# conflictstyle = diff3
 [difftool]
 	prompt = false
 [mergetool "mymeld"]
@@ -40,3 +40,8 @@
 	autocorrect = 1
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Gvdiff\" \"$MERGED\"
+[mergetool "diffconflicts"]
+	trustExitCode = true
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+[mergetool]
+	keepBackup = false

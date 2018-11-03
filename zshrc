@@ -28,6 +28,16 @@ setopt NO_CASE_GLOB
 # Misc
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
+# PW generator
+xkp() {
+  pw=`diceware`
+  b64=`echo -n ${pw} | base64 -w0`
+  echo "${b64}  ${pw}"
+}
+
+# Git
+alias gitprune="git remote prune origin && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
+
 # Docker
 alias docker="sudo docker"
 alias d="docker"
