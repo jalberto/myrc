@@ -1,4 +1,4 @@
-
+# zmodload zsh/zprof
 
 #
 # User configuration sourced by interactive shells
@@ -86,7 +86,7 @@ alias vi="nvim"
 alias v="vi"
 
 # tmux
-alias by="byobu"
+alias t="tmux"
 
 # asdf
 source $HOME/.asdf/asdf.sh
@@ -124,4 +124,4 @@ vmc() {
     fi
   fi
 }
-
+# zprof

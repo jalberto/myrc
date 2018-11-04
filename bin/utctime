@@ -1,0 +1,3 @@
+#!/bin/sh
+
+date --utc '+%H:%M %Z'
