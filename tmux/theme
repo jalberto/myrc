@@ -5,4 +5,6 @@ setw -g window-status-current-format "#[fg=white,bg=#020221] #I#[fg=#787882]:#{?
 # status
 set -g status-right "#{prefix_highlight} #[fg=yellow]#(tmuxstatus gitbr #{pane_current_path}) #[fg=#787882]│ #[fg=white]#(tmuxstatus utctime) "
 
+set -g window-style "bg=default"
+
 # vim: set ft=tmux:
