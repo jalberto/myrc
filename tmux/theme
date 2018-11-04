@@ -3,6 +3,6 @@ setw -g window-status-format "#[fg=#787882,bg=#020221] #I:#W:#{b:pane_current_pa
 setw -g window-status-current-format "#[fg=white,bg=#020221] #I#[fg=#787882]:#{?window_zoomed_flag,#[fg=blue](,}#[fg=yellow]#W:#{b:pane_current_path}#{?window_zoomed_flag,#[fg=blue]),} "
 
 # status
-set -g status-right "#{prefix_highlight} #[fg=white]#(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD) #[fg=#787882]│ #[fg=white]#(utctime) "
+set -g status-right "#{prefix_highlight} #[fg=yellow]#(tmuxstatus gitbr #{pane_current_path}) #[fg=#787882]│ #[fg=white]#(tmuxstatus utctime) "
 
 # vim: set ft=tmux:
