@@ -44,3 +44,5 @@ set -g status-right-attr "none"
 set -g status-right-length "100"
 set -g status-left "#[fg=white] #S #[fg=#57575e]│ "
 set -g status-right "#[fg=yellow,bg=#36363a]$USER@#h #[fg=#787882]│ #[fg=white]%d/%m/%Y %H:%M "
+
+# vim: set ft=tmux:
