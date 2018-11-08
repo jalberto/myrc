@@ -1,6 +1,6 @@
 # quick pane cycling
-unbind ^A
-bind ^A select-pane -t :.+
+# unbind M-Space
+bind M-Space select-pane -t :.+
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
