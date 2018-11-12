@@ -25,6 +25,10 @@ setopt RM_STAR_WAIT
 # Case insensitive globbing
 setopt NO_CASE_GLOB
 
+# Local plugins
+export ZSH_CACHE_DIR=${fpath[1]}
+[[ -d ${HOME}/myrc/zsh ]] && source ${HOME}/myrc/zsh/*.plugin.zsh
+
 # Misc
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
@@ -44,11 +48,10 @@ alias d="docker"
 alias doco="docker-compose"
 
 # K8s
-alias k="kubectl"
+# alias k="kubectl"
 alias kp="kube-prompt"
 alias kt="kubetail"
 alias kall="kubectl --all-namespaces"
-source <(kubectl completion zsh)
 
 # elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
