@@ -32,6 +32,9 @@ export ZSH_CACHE_DIR=${fpath[1]}
 # Misc
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
 # PW generator
 xkp() {
   pw=`diceware`
@@ -59,17 +62,18 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # ruby
 bu() {
   if [ -f $PWD/bin/bundle ]; then
-    bin/bundle
+    bin/bundle $@
   else
-    bundle
+    bundle $@
   fi
 }
 
 ra() {
+  export ELASTIC_APM_ACTIVE=false
   if [ -f $PWD/bin/rails ]; then
-    bin/rails
+    bin/rails $@
   else
-    bundle ex rails
+    bundle ex rails $@
   fi
 }
 
@@ -81,7 +85,7 @@ alias dnfU="dnf update"
 alias dnfs="dnf search"
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --smart-case --glob "!**/{.git,node_modules,vendor,priv,deps,_build}/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --smart-case --glob "!**/{.git,node_modules,vendor,priv,deps,_build,tmp}/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 source /usr/share/fzf/shell/key-bindings.zsh
@@ -93,6 +97,14 @@ alias v="vi"
 
 # tmux
 alias t="tmux"
+alias tl="tmux-layout-load"
+alias tw="tmux list-windows -F '#{window_active} #{window_layout}' | grep '^1' | cut -d ' ' -f 2"
+
+tmux-layout-load() {
+  if [ -f $PWD/.tmux.yaml ]; then
+    teamocil --here --layout $PWD/.tmux.yaml
+  fi
+}
 
 # asdf
 source $HOME/.asdf/asdf.sh

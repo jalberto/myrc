@@ -27,4 +27,7 @@ bind -T copy-mode-vi 'y' send -X copy-selection
 bind -T copy-mode-vi 'V' send -X rectangle-toggle
 bind ] paste-buffer
 
+# Send command to all panels
+bind -n M-s setw synchronize-panes
+
 # vim: set ft=tmux:
