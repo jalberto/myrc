@@ -1,6 +1,6 @@
 [user]
 	name = JA
-	email = ja@josealberto.org
+	email = ja@vizlegal.com
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim -f
